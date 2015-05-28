@@ -62,7 +62,7 @@ $("#searchtype").change(function(){
       	var autosearch = [];
         var questionToAnswer = []
         var clickedTitle;
-        var passToAnswerAjax;
+        var passQuestionIdToAjax;
 
         // console.log(questionToAnswer)
       
@@ -86,15 +86,21 @@ $("#searchtype").change(function(){
                 for (q = 0; q < questionToAnswer.length; q++){
                     var questionMatch  = (questionToAnswer[q].label.includes(clickedTitle))
                     if (questionMatch == 1){
-                      passToAnswerAjax = questionToAnswer[q].questionId
+                      passQuestionIdToAjax = questionToAnswer[q].questionId
                     }
                 }
 
+               $.ajax({
+                 type: 'GET',
+                 dataType: 'json',
+                 url: "https://api.stackexchange.com/2.2/questions/" + passQuestionIdToAjax +"/answers?order=desc&sort=activity&site=stackoverflow&filter=!-*f(6t0WVmuu" 
+               }).done(function(response){
+                 for(i = 0; i < response["items"].length; i++){
+                     $("#answers").append("<li><a href='http://www.stackoverflow.com/a/" + response["items"][i]["answer_id"] + "'>" + response["items"][i]["body"] + "</a></li>");
+                 }
+               })
 
 
-                
-
-               console.log(passToAnswerAjax)
                 //if "clickedTitle" is included in "questionToAnswer", return matched object's question_id 
               }
 
