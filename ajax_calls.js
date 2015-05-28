@@ -62,6 +62,7 @@ $("#searchtype").change(function(){
       	var autosearch = [];
         var questionToAnswer = []
         var clickedTitle;
+        var passToAnswerAjax;
 
         // console.log(questionToAnswer)
       
@@ -73,31 +74,32 @@ $("#searchtype").change(function(){
           for(i = 0; i < response["items"].length; i++){
            autosearch.push({ label: response["items"][i]["title"], category: language });
            questionToAnswer.push({ label: response["items"][i]["title"], questionId: response["items"][i]["question_id"] });
-           // $(".ui-menu-item").autocomplete(function(){
-           //    console.log("heeeeeellloooo")
-           // })
-
-
-           // $( "#search" ).autocomplete({
-           //     source: autosearch,
-           //     select: function(event, ui){
-           //      console.log("helllooo")
-           //    }
-           //  })
- 
-           // keyData.push
-           // question_id = response["items"][]
       }
 
     	    $( "#search" ).catcomplete({
           		delay: 0,
           		source: autosearch, 
               select:function(event, ui){
-                console.log("helllo")
                 clickedTitle = ui["item"]["label"]
-                // console.log(clickedTitle)
+                // console.log(questionToAnswer[0].label)
+
+                for (q = 0; q < questionToAnswer.length; q++){
+                    var questionMatch  = (questionToAnswer[q].label.includes(clickedTitle))
+                    if (questionMatch == 1){
+                      passToAnswerAjax = questionToAnswer[q].questionId
+                    }
+                }
+
+
+
+                
+
+               console.log(passToAnswerAjax)
+                //if "clickedTitle" is included in "questionToAnswer", return matched object's question_id 
               }
+
         	}); // end of search 
+
 
      }); 
 
