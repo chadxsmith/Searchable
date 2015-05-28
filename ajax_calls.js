@@ -59,9 +59,11 @@ $("#searchtype").change(function(){
 
         var language = $('#searchtype').find(":selected").text();
 
-      	var data = [];
-      	// var label_response;
-      	// var tag_response ;
+      	var autosearch = [];
+        var questionToAnswer = []
+        var clickedTitle;
+
+        // console.log(questionToAnswer)
       
     	$.ajax({
     		type: 'GET',
@@ -69,12 +71,32 @@ $("#searchtype").change(function(){
     		url:"https://api.stackexchange.com/2.2/questions?order=desc&sort=activity&tagged="+ language + "&site=stackoverflow"
     	}).done(function(response){
           for(i = 0; i < response["items"].length; i++){
-           data.push({ label: response["items"][i]["title"], category: language }); 
+           autosearch.push({ label: response["items"][i]["title"], category: language });
+           questionToAnswer.push({ label: response["items"][i]["title"], questionId: response["items"][i]["question_id"] });
+           // $(".ui-menu-item").autocomplete(function(){
+           //    console.log("heeeeeellloooo")
+           // })
+
+
+           // $( "#search" ).autocomplete({
+           //     source: autosearch,
+           //     select: function(event, ui){
+           //      console.log("helllooo")
+           //    }
+           //  })
+ 
+           // keyData.push
+           // question_id = response["items"][]
       }
 
     	    $( "#search" ).catcomplete({
           		delay: 0,
-          		source: data
+          		source: autosearch, 
+              select:function(event, ui){
+                console.log("helllo")
+                clickedTitle = ui["item"]["label"]
+                // console.log(clickedTitle)
+              }
         	}); // end of search 
 
      }); 
