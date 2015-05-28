@@ -57,44 +57,26 @@
 
 $("#searchtype").change(function(){
 
-  console.log("i've been clicked")
-  // language = $('#language_val').val();
-  var language = $('#searchtype').find(":selected").text();
-
-  console.log(language)
-
-  // $(function() {
+        var language = $('#searchtype').find(":selected").text();
 
       	var data = [];
-      	var label_response;
-      	var tag_response ;
+      	// var label_response;
+      	// var tag_response ;
       
     	$.ajax({
     		type: 'GET',
     		dataType: 'json',
     		url:"https://api.stackexchange.com/2.2/questions?order=desc&sort=activity&tagged="+ language + "&site=stackoverflow"
     	}).done(function(response){
-    		
-    		for(i = 0; i < response["items"].length; i++){
+          for(i = 0; i < response["items"].length; i++){
+           data.push({ label: response["items"][i]["title"], category: language }); 
+      }
 
-    				label_response = ({ label: response["items"][i]["title"]});
-    				tag_response = ({ categories: response["items"][i]["tags"]});
-    	
-    				for (l = 0; l < 1; l++){
-    						for (t = 0; t < tag_response["categories"].length; t++){	
-    							data.push({label: label_response["label"],
-    								         category:tag_response["categories"][t]})
-    			         }
-                   console.dir(data)
-    		      }
-    		    }
     	    $( "#search" ).catcomplete({
           		delay: 0,
           		source: data
         	}); // end of search 
-    		// })
 
-      //place second ajax call for answer here 
      }); 
 
 });
