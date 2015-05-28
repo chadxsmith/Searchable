@@ -1,3 +1,8 @@
+ $( document ).ready(function() {
+    console.log( "ready!" );
+
+
+
  $.widget( "custom.catcomplete", $.ui.autocomplete, {
     _create: function() {
       this._super();
@@ -50,74 +55,52 @@
 	// })
 
 
+$("#searchtype").change(function(){
 
-  $(function() {
+  console.log("i've been clicked")
+  // language = $('#language_val').val();
+  var language = $('#searchtype').find(":selected").text();
 
-  	var data = [];
-  	console.log(data)
+  console.log(language)
 
-  	var label_response;
-  	var tag_response ;
-  
+  // $(function() {
 
+      	var data = [];
+      	var label_response;
+      	var tag_response ;
+      
+    	$.ajax({
+    		type: 'GET',
+    		dataType: 'json',
+    		url:"https://api.stackexchange.com/2.2/questions?order=desc&sort=activity&tagged="+ language + "&site=stackoverflow"
+    	}).done(function(response){
+    		
+    		for(i = 0; i < response["items"].length; i++){
 
-	$.ajax({
-		type: 'GET',
-		dataType: 'json',
-		url:"https://api.stackexchange.com/2.2/questions?order=desc&sort=activity&site=stackoverflow"
-	}).done(function(response){
-		
-		for(i = 0; i < response["items"].length; i++){
+    				label_response = ({ label: response["items"][i]["title"]});
+    				tag_response = ({ categories: response["items"][i]["tags"]});
+    	
+    				for (l = 0; l < 1; l++){
+    						for (t = 0; t < tag_response["categories"].length; t++){	
+    							data.push({label: label_response["label"],
+    								         category:tag_response["categories"][t]})
+    			         }
+                   console.dir(data)
+    		      }
+    		    }
+    	    $( "#search" ).catcomplete({
+          		delay: 0,
+          		source: data
+        	}); // end of search 
+    		// })
 
-				label_response = ({ label: response["items"][i]["title"]});
-				tag_response = ({ categories: response["items"][i]["tags"]});
-	
-				for (l = 0; l < label_response["label"][i].length; l++){
-						// console.log(label_response)
-						for (t = 0; t < tag_response["categories"].length; t++){
-							
-							data.push({label: label_response["label"],
-								     category:tag_response["categories"][t]})
-							// console.log(data)
-			
-			}
-		}
+      //place second ajax call for answer here 
+     }); 
 
-		}
-
-	    $( "#search" ).catcomplete({
-      		delay: 0,
-      		source: data
-
-    	});	
-
-    
-		
-		})
-
+});
 
 
 
-
-
-    // var data = [
-    //   { label: "anders", category: "Test 1" },
-    //   { label: "andreas", category: "Test 2" },
-    //   { label: "antal", category: "Test 3" },
-    //   { label: "annhhx10", category: "Products" },
-    //   { label: "annk K12", category: "Products" },
-    //   { label: "annttop C13", category: "Products" },
-    //   { label: "anders andersson", category: "fadfdsa" },
-    //   { label: "andreas andersson", category: "fadf" },
-    //   { label: "andreas johnson", category: "fadsfadsf" }
-    // ];
- 
-    // $( "#search" ).catcomplete({
-    //   delay: 0,
-    //   source: data
-    // });
-
-  }); 
 
 
 
@@ -178,3 +161,5 @@
 //    });
 
 // });
+
+ });
