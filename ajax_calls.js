@@ -54,8 +54,14 @@
 	// 	}
 	// })
 
+ $("#search").click(function(){
+    $(this).val(""); 
+    $( "#answers" ).empty(); 
+    
+ }) 
 
 $("#searchtype").change(function(){
+
 
         var language = $('#searchtype').find(":selected").text();
 
@@ -79,14 +85,16 @@ $("#searchtype").change(function(){
     	    $( "#search" ).catcomplete({
           		delay: 0,
           		source: autosearch, 
-              select:function(event, ui){
+              select:function(event, ui){            
                 clickedTitle = ui["item"]["label"]
+
                 // console.log(questionToAnswer[0].label)
 
                 for (q = 0; q < questionToAnswer.length; q++){
                     var questionMatch  = (questionToAnswer[q].label.includes(clickedTitle))
                     if (questionMatch == 1){
                       passQuestionIdToAjax = questionToAnswer[q].questionId
+                      console.log(passQuestionIdToAjax)
                     }
                 }
 
@@ -96,8 +104,18 @@ $("#searchtype").change(function(){
                  url: "https://api.stackexchange.com/2.2/questions/" + passQuestionIdToAjax +"/answers?order=desc&sort=activity&site=stackoverflow&filter=!-*f(6t0WVmuu" 
                }).done(function(response){
                  for(i = 0; i < response["items"].length; i++){
-                     $("#answers").append("<li><a href='http://www.stackoverflow.com/a/" + response["items"][i]["answer_id"] + "'>" + response["items"][i]["body"] + "</a></li>");
+
+                          $("#answers").append("<li><a href='http://www.stackoverflow.com/a/" + response["items"][i]["answer_id"] + "'>" + response["items"][i]["body"] + "</a></li>");
+                          $("#answers").append("<li>I got an answer</li>");
+
+                          if ($("#answers").is(':empty')) {
+                          $("#answers").append("<li>No answer found</li>");
+                          console.log("no answers")
+                         
+                          }        
+                    
                  }
+                
                })
 
 
