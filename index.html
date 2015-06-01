@@ -6,6 +6,7 @@
 <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
 <script src="ajax_calls.js"></script>
+<link rel="stylesheet" href="styles.css" />
 
   <style>
   .ui-autocomplete-category {
@@ -21,76 +22,25 @@
 <body>
 
 
-<!--   <form id="search">
-    <h1>searchable</h1>
+  <div class="search_section">
+          <select id="searchtype">
+                     <option id="language_val" value="html">html</option>
+                     <option id="language_val" value="css">css</option>
+                     <option id="language_val" value="javascript">javascript</option>
+                     <option id="language_val" value="javascript">ruby</option>
+                    <option id="language_val" value="javascript">git</option> 
+          </select>
 
+          <label for="search_label">Search: </label>
+          <input id="search">
 
-  <div class="ui-widget">
+        
+    </div>
 
-  
-	      	 <select id="search-type">
-		         <option id="language_val" value="html">html</option>
-		         <option id="language_val" value="css">css</option>
-		         <option id="language_val" value="javascript">javascript</option>
-		      </select>
+     <div id="answers"></div>
 
+     <div id="testanswers"></div>
 
-              <label for="tags"></label>
-              <input type="text" id="tags">
-
-	
-    		  <input type="submit" id="submit-button">
-   </div>
-
-
-
-
-  </form> -->
-
-
-
-  <select id="searchtype">
-             <option id="language_val" value="html">html</option>
-             <option id="language_val" value="css">css</option>
-             <option id="language_val" value="javascript">javascript</option>
-             <option id="language_val" value="javascript">ruby</option>
-            <option id="language_val" value="javascript">git</option> 
-  </select>
-
-  <label for="search_label">Search: </label>
-<input id="search">
-
-<div id="answers"></div>
-
-<script>
-
-
-
-
-
-
-
-
-
-
-// $.ajax({
-// 	type: 'GET',
-// 	dataType: 'json'
-// 	url:"https://api.stackexchange.com/2.2/questions?order=desc&sort=activity&site=stackoverflow"
-// }).done(function(response){
-// 	for(i = 0; i < response["item"].length; i++){
-// 	   var data = [
-// 	      { label: response["item"][i]["title"], response["item"][i]["tag"] },
-// 	    ];
-// 	    $( "#search" ).catcomplete({
-// 	      delay: 0,
-// 	      source: data
-// 	    });	 	
-// 	}
-// })
-
-
-</script>
 
 
 </body>

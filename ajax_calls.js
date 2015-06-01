@@ -38,15 +38,31 @@ function searchQuestionAndAnswer(){
                  dataType: 'json',
                  url: "https://api.stackexchange.com/2.2/questions/" + passQuestionIdToAjax +"/answers?order=desc&sort=activity&site=stackoverflow&filter=!-*f(6t0WVmuu" 
                }).done(function(response){
-                 for(i = 0; i < response["items"].length; i++){
 
-                          $("#answers").append("<li><a href='http://www.stackoverflow.com/a/" + response["items"][i]["answer_id"] + "'>" + response["items"][i]["body"] + "</a></li>");
-                          $("#answers").append("<li>I got an answer</li>");
+                  if(response["items"].length === 0){
+                      $("#answers").append("<li>Sorry, no answers for that question</li>");
+                  } 
 
-                          if ($("#answers").is(':empty')) {
-                            $("#answers").append("<li>No answer found</li>");
-                            console.log("no answers")    
-                          }        
+                  else{
+                      for(i = 0; i < response["items"].length; i++){
+
+                          // var body = response["items"][i]["body"]
+                           
+                          // var codeOnly = $(body).find("pre")
+                          // console.log(codeOnly)
+                          // var test = $("#answers").append("<div id='square'><li><a href='http://www.stackoverflow.com/a/" + response["items"][i]["answer_id"] + "'>" + response["items"][i]["body"]+ "</a></li></div>").css('display', 'inline');
+                          var test = $("#answers").append("<div id='square'><li><a href='http://www.stackoverflow.com/a/" + response["items"][i]["answer_id"] + "'>" + $(response["items"][i]["body"]).find("pre").prevObject[2].innerHTML + "</a></li></div>").css('display', 'inline');       
+                          var again = $(response["items"][i]["body"]).find("pre").prevObject
+                          console.log(again.find("pre").prevObject)
+                          // var number = again.indexOf("pre")
+                          // console.log(number)
+                         
+                          // var testAgain = $(test).find("pre")
+                          // $("#testanswers").append(testAgain)
+
+                          
+                  }
+      
                  }
                 
                })
@@ -81,16 +97,18 @@ function searchQuestionAndAnswer(){
   });
 
 
+
+
  $("#search").click(function(){
     $(this).val(""); 
+    $( "#square" ).empty(); 
     $( "#answers" ).empty(); 
     searchQuestionAndAnswer()
   });
-
-
     
 
   $("#searchtype").change(function(){
+      $( "#square" ).empty();  
       $( "#answers" ).empty();        
        searchQuestionAndAnswer()
    });

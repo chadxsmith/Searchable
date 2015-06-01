@@ -1,0 +1,22 @@
+body{
+	background: #eeeeee;	
+}
+.search_section{
+ padding-top: 5%;
+ padding-left: 30%;
+}
+
+#square{
+  background: #ffffff;
+  height: 14rem;
+  width: 40%;
+  margin-left: 29%;
+  margin-right: 2%;
+  margin-top: 2%;
+  overflow: hidden;
+ /* display: inline;*/
+}
+
+#testanswers{
+	color: red;
+}
