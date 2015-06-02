@@ -14,9 +14,91 @@ body{
   margin-right: 2%;
   margin-top: 2%;
   overflow: hidden;
- /* display: inline;*/
 }
 
 #testanswers{
 	color: red;
 }
+
+
+
+#search_test{
+	border-bottom: 1px solid;
+  	width: 177%;
+  	padding-left: 56px;
+    padding-bottom: 7px;
+    font-weight: 300;
+}
+
+.search-section{
+	margin-left: 30%;
+}
+
+.mdi-action-search{
+	width: 0px;
+
+}
+
+.mdi-action-search::before{
+	width: 0px;
+	padding-left: 30px;
+	
+}
+
+.logo{
+	margin-top: 0px;
+}
+
+.dropdown-area{
+	margin-left: 190%;
+}
+
+.btn{
+  background-color: #FFCDD2;
+  color: #EF5350;
+ }
+
+.btn:hover{
+  background-color: #FFEBEE;
+  color: #F44336;
+ }
+
+
+.dropdown-content{
+	color: black;
+	min-width:110px;
+}
+
+.dropdown-content li>a {
+	color: #E57373;
+}
+
+.dropdown1 ul{
+	color: black;
+}
+
+.dropdown-content li{
+	color: black;
+}
+
+.mdi-navigation-arrow-drop-down{
+	width: 0px;
+	margin-top: -62px;
+	color: #EF5350;
+}
+
+.mdi-navigation-arrow-drop-down::before{
+	width: 0px;	
+	
+}
+
+/*input value:{
+  	padding-left: 56px;
+  padding-bottom: 7px;
+}
+*/
+
+/*.input-field{
+	width: 30%;
+	
+}*/
