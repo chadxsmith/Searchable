@@ -92,6 +92,39 @@ body{
 	
 }
 
+.card-content{
+  
+   background-color: white;
+}
+
+.card .card-image{
+   background-color: gray;
+}
+
+.card .card-content {
+  padding: 9px;
+}
+
+.card{
+	background-color: grey;
+}
+
+.card {
+	overflow: auto;
+}
+
+.card .card-reveal {
+	overflow: auto;
+}
+
+.details{
+	overflow: auto;
+}
+.card__group{
+
+}
+
+
 /*input value:{
   	padding-left: 56px;
   padding-bottom: 7px;

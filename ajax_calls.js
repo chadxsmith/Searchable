@@ -53,7 +53,8 @@ function searchQuestionAndAnswer(){
                             for(var x = 0; x < el.childNodes.length; x++){
                               if(el.childNodes[x].localName === "pre"){
                                 // console.log(el.childNodes[x])
-                                $("#answers").append("<div id='square'><li><a href='http://www.stackoverflow.com/a/" + response["items"][i]["answer_id"] + "'>" + el.childNodes[x].innerHTML + "</a></li></div>").css('display', 'inline');
+                                $("#answers").append(
+                                "<div class='row'><div class='col s12 m7'><div class='card'><div class='card-image'"+ el.childNodes[x].innerHTML + "</div><div class='card'><div class='card-image'></div></div><div class='card-content'><span class='card-title activator grey-text text-darken-4'>Card Title<i class='mdi-navigation-more-vert right'></i></span><p><a href='#''>This is a link</a></p></div></div></div></div>")
                            
                               }
 
