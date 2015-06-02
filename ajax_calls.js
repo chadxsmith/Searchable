@@ -53,9 +53,8 @@ function searchQuestionAndAnswer(){
                             for(var x = 0; x < el.childNodes.length; x++){
                               if(el.childNodes[x].localName === "pre"){
                                 // console.log(el.childNodes[x])
-
                                 $("#answers").append(
-                                "<div class='row'><div class='col s12 m7'><div class='card'><div class='card-image'"+ el.childNodes[x].innerHTML + "</div><div class='card'><div class='card-image'></div></div><div class='card-content'><span class='card-title activator grey-text text-darken-4'>Upvote Count: " + response["items"][i]["score"] + "<i class='mdi-navigation-more-vert right'></i></span><p><a href='http://www.stackoverflow.com/a/" + response["items"][i]["answer_id"] + "'>Source</a></p></div></div></div></div>")
+                                "<div class='row'><div class='col s12 m7'><div class='card'><div class='card-image'"+ el.childNodes[x].innerHTML + "</div><div class='card'><div class='card-image'></div></div><div class='card-content'><span class='card-title activator grey-text text-darken-4'>Upvote Count: " + response["items"][i]["score"] + "<i class='mdi-navigation-more-vert right'></i></span><p><a href='http://www.stackoverflow.com/a/" + response["items"][i]["answer_id"] + "'>Source</a></p></div><div class='card-reveal'><span class='card-title grey-text text-darken-4'>Context <i class='mdi-navigation-close right'></i></span><p class='details'>" + response["items"][i]["body"] + "</p></div></div></div></div></div>")
                            
                               }
 

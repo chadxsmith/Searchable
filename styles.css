@@ -97,6 +97,10 @@ body{
    background-color: white;
 }
 
+/*.card-image{
+	padding-top: 70px;
+}*/
+
 .card .card-image{
    background-color: gray;
 }
