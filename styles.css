@@ -97,20 +97,33 @@ body{
    background-color: white;
 }
 
-/*.card-image{
-	padding-top: 70px;
-}*/
+.container{
+  float: left;
+  padding-top: 3%;
+  margin-left: 31.12%;
+}
 
 .card .card-image{
-   background-color: gray;
+   background-color: #E0E0E0;
 }
+
+.card-image{
+	height: 200px;
+}
+
+.card-image{
+	padding-top: 9%;
+	padding-left: 4%;
+}
+
+
 
 .card .card-content {
   padding: 9px;
 }
 
 .card{
-	background-color: grey;
+	background-color: #E0E0E0;
 }
 
 .card {
