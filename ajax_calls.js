@@ -1,11 +1,20 @@
 $( document ).ready(function() {
     console.log( "ready!" );
 
-function searchQuestionAndAnswer(){
+var language;
 
-        var language = $('#searchtype').find(":selected").text();
+
+
+function searchQuestionAndAnswer(){
+        $( "body" ).removeClass( ".ui-state-focus" )
+
+        if (language === "All" || language === undefined ){
+            language = ""
+          }
+
         var autosearch = [];
         var questionToAnswer = []
+        console.log(autosearch)
         var clickedTitle;
         var passQuestionIdToAjax;
       
@@ -14,6 +23,8 @@ function searchQuestionAndAnswer(){
         dataType: 'json',
         url:"https://api.stackexchange.com/2.2/questions?order=desc&sort=activity&tagged="+ language + "&site=stackoverflow"
       }).done(function(response){
+        
+
           for(i = 0; i < response["items"].length; i++){
            autosearch.push({ label: response["items"][i]["title"], category: language });
            questionToAnswer.push({ label: response["items"][i]["title"], questionId: response["items"][i]["question_id"] });
@@ -39,9 +50,11 @@ function searchQuestionAndAnswer(){
                  dataType: 'json',
                  url: "https://api.stackexchange.com/2.2/questions/" + passQuestionIdToAjax +"/answers?order=desc&sort=activity&site=stackoverflow&filter=!-*f(6t0WVmuu" 
                }).done(function(response){
-                  // console.log(response)
-                  if(response["items"].length === 0){
+                  console.log(response)
+
+                  if(response["items"].length === 0 || response["items"][i].indexOf("pre") === -1 ){
                       $("#noanswer").append("<li>Sorry, no answers for that question</li>");
+                      console.log("no answer budddy!")
                   } 
 
                   else{
@@ -49,15 +62,12 @@ function searchQuestionAndAnswer(){
                      
                       for(i = 0; i < response["items"].length; i++){
                       // Iterating over each answer from the API
-                          var container = document.createElement("div")
-                          container.className = "container"
-
+ 
 
                           var el = document.createElement("div");
 
                           el.innerHTML = response["items"][i]["body"];
-                          console.log(el)
-                          console.log(el.innerHTML)
+                       
 
                             for(var x = 0; x < el.childNodes.length; x++){
                           // Iterating over all the <pre> tags in the present answer
@@ -94,7 +104,7 @@ function searchQuestionAndAnswer(){
                           
                         }              
       
-                 }
+                 } // end of else condition
                 
                })
               }
@@ -140,18 +150,35 @@ function searchQuestionAndAnswer(){
     $( "#square" ).empty(); 
     $( "#answers" ).empty();
     $( "#noanswer" ).empty();  
-    $( "#testanswers" ).empty();   
+    $( "#testanswers" ).empty();  
+    language;
+    
     searchQuestionAndAnswer()
   });
     
 
-  $("#searchtype").change(function(){
-      $( "#square" ).empty();  
-      $( "#answers" ).empty(); 
-      $( "#noanswer" ).empty();      
-      $( "#testanswers" ).empty();       
-      searchQuestionAndAnswer()
-   });
+  // $("#searchtype").change(function(){
+  //     $( "#square" ).empty();  
+  //     $( "#answers" ).empty(); 
+  //     $( "#noanswer" ).empty();      
+  //     $( "#testanswers" ).empty();       
+  //     searchQuestionAndAnswer()
+  //  });
 
+
+  $("#dropdown1").click(function(event){
+    language = $(event.target).text(); 
+
+    $('#dropdown_option').text(language);
+
+    // console.log("ive been clicked")
+    // var language = $(event.target).text();
+    // language = $(event.target).text();  
+    searchQuestionAndAnswer()
+  })
+
+  $("#floating-btn").click(function(){
+    window.scrollTo(0, 0);
+  })
 
  });

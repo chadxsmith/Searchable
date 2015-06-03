@@ -41,24 +41,78 @@
               </div>
 
               <div class="col 2">
-                  <p class="logo">Newbie</p>
+                  <p class="logo">Searchable</p>
 
               </div> 
 
 
-              <div class="col 2">
+<!--               <div class="col 2">
 
                 <div class="dropdown-area">
-                    <!-- Dropdown Trigger -->
+                
                   <div class="dropdown-box">
                      
-                        <a class='dropdown-button btn' href='#' data-activates='dropdown1'> All</a><i class="mdi-navigation-arrow-drop-down"></i>
+                        <a id="dropdown_option" class='dropdown-button btn' href='#' data-activates='dropdown1'>All</a><i class="mdi-navigation-arrow-drop-down"></i>
                 
 
                     </div>
 
-                    <!-- Dropdown Structure -->
+               
                     <ul id='dropdown1' class='dropdown-content'>
+                      <li><a href="#!">All</a></li>
+                      <li class="divider"></li>  
+                      <li><a href="#!">HTML</a></li>
+                      <li class="divider"></li>                  
+                      <li><a href="#!">CSS</a></li>
+                      <li class="divider"></li>
+                      <li><a href="#!">Javascript</a></li>
+                      <li class="divider"></li>   
+                      <li><a href="#!">Ruby</a></li>  
+                      <li class="divider"></li>   
+                      <li><a href="#!">GIT</a></li>                       
+                    </ul>
+
+                </div>
+
+              </div>             
+ -->
+            <div class="search-section">
+
+
+                  <div class="col 1">
+                      <i class="mdi-action-search"></i>
+                  </div><!-- end of col 1  -->
+
+                  <div class="col 4">
+
+                    <div class="input-field " style="
+                    margin-right: 250px";>
+      
+                      <input value="Search" id="search" type="text" class="validate target">  
+
+                    </div> <!-- end of input-field   -->
+
+                 </div><!-- end of col 3  -->
+
+          </div><!-- end of row  -->
+
+    
+
+              <div class="col 2">
+
+                <div class="dropdown-area">
+                
+                  <div class="dropdown-box">
+                     
+                        <a id="dropdown_option" class='dropdown-button btn' href='#' data-activates='dropdown1'>All</a><i class="mdi-navigation-arrow-drop-down"></i>
+                
+
+                    </div>
+
+               
+                    <ul id='dropdown1' class='dropdown-content'>
+                      <li><a href="#!">All</a></li>
+                      <li class="divider"></li>  
                       <li><a href="#!">HTML</a></li>
                       <li class="divider"></li>                  
                       <li><a href="#!">CSS</a></li>
@@ -74,30 +128,13 @@
 
               </div>             
 
-            <div class="search-section">
-
-
-                  <div class="col 1">
-                      <i class="mdi-action-search"></i>
-                  </div><!-- end of col 1  -->
-
-                  <div class="col 3">
-
-                    <div class="input-field ">
-      
-                      <input value="Search" id="search" type="text" class="validate target">  
-
-                    </div> <!-- end of input-field   -->
-
-                 </div><!-- end of col 3  -->
-
-          </div><!-- end of row  -->
-
-    
-
-
-    </div>
   </nav>  
+
+<!--  <a class="btn-floating btn-large waves-effect waves-light red"><i class="mdi-content-add"></i></a> -->
+
+
+
+  <div id="noanswer"></div>
 
   <div class="container">
 
@@ -122,8 +159,11 @@
 
     </div>
 
+ <a id="floating-btn" class="btn-floating btn-large waves-effect waves-light red"><i class="mdi-content-add"></i></a>
 
 </div>
+
+
 
 </body>
 </html>

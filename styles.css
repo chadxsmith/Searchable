@@ -1,6 +1,13 @@
 body{
 	background: #eeeeee;	
 }
+.ui-menu-item {
+  font-weight: 400;
+  color: #616161;
+  font-family: "Roboto"
+}
+
+
 .search_section{
  padding-top: 5%;
  padding-left: 30%;
@@ -20,6 +27,25 @@ body{
 	color: red;
 }
 
+.ui-menu .ui-menu-item{
+	padding: 19px 1em 3px .4em;
+}
+
+
+
+/*.ui-menu-item:{
+	background: red;	
+}*/
+	/*.ui-autocomplete{
+		height: 300px !important;
+		overflow: auto;
+	}*/
+.ui-state-focus{
+	background: #EEEEEE !important;
+	
+	border-top: #e0e0e0 !important;
+/*	border: #e0e0e0 !important;*/
+}
 
 
 #search{
@@ -31,7 +57,7 @@ body{
 }
 
 .search-section{
-	margin-left: 30%;
+	margin-left: 23%;
 }
 
 .mdi-action-search{
@@ -49,13 +75,18 @@ body{
 	margin-top: 0px;
 }
 
-.dropdown-area{
-	margin-left: 190%;
+.input-field{
+	margin-right: 250px;
 }
 
+/*.dropdown-area{
+	margin-right: 250px;
+}
+*/
 .btn{
   background-color: #FFCDD2;
   color: #EF5350;
+  text-transform: none;
  }
 
 .btn:hover{
@@ -63,7 +94,9 @@ body{
   color: #F44336;
  }
 
-
+#dropdown_option{
+	text-transform: capitalize;
+}
 .dropdown-content{
 	color: black;
 	min-width:110px;
@@ -100,11 +133,12 @@ body{
 .container{
   float: left;
   padding-top: 3%;
-  margin-left: 31.12%;
+  margin-left: 12.3%;
 }
 
 .card .card-image{
    background-color: #E0E0E0;
+   overflow: scroll;
 }
 
 .card-image{
@@ -141,6 +175,13 @@ body{
 
 }
 
+.btn-floating{
+  position: fixed;
+  bottom: 10px;
+  padding-bottom: 4%;
+  margin-left: 558px;
+
+}
 
 /*input value:{
   	padding-left: 56px;
