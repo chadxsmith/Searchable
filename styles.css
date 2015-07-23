@@ -183,6 +183,15 @@ body{
 
 }
 
+
+#noanswer{
+  list-style: none;
+  margin-left: 85px;
+  float: left;
+  padding-top: 100px;
+  font-size: 21px;
+}
+
 /*input value:{
   	padding-left: 56px;
   padding-bottom: 7px;

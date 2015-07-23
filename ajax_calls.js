@@ -9,11 +9,12 @@ function searchQuestionAndAnswer(){
         $( "body" ).removeClass( ".ui-state-focus" )
 
         if (language === "All" || language === undefined ){
-            language = ""
+            language = ""  
           }
 
         var autosearch = [];
         var questionToAnswer = []
+        var title = []
         console.log(autosearch)
         var clickedTitle;
         var passQuestionIdToAjax;
@@ -28,6 +29,7 @@ function searchQuestionAndAnswer(){
           for(i = 0; i < response["items"].length; i++){
            autosearch.push({ label: response["items"][i]["title"], category: language });
            questionToAnswer.push({ label: response["items"][i]["title"], questionId: response["items"][i]["question_id"] });
+            
       }
 
           $( "#search" ).catcomplete({
@@ -50,23 +52,24 @@ function searchQuestionAndAnswer(){
                  dataType: 'json',
                  url: "https://api.stackexchange.com/2.2/questions/" + passQuestionIdToAjax +"/answers?order=desc&sort=activity&site=stackoverflow&filter=!-*f(6t0WVmuu" 
                }).done(function(response){
-                  console.log(response)
 
-                  if(response["items"].length === 0 || response["items"][i].indexOf("pre") === -1 ){
-                      $("#noanswer").append("<li>Sorry, no answers for that question</li>");
-                      console.log("no answer budddy!")
+                  console.log(response["items"])
+
+                  if(response["items"].length === 0){
+                      $("#noanswer").append("<li>Sorry, no code snippets avaliable</li>");
+                
                   } 
+
 
                   else{
 
-                     
-                      for(i = 0; i < response["items"].length; i++){
-                      // Iterating over each answer from the API
- 
+                      for(i = 0; i < response["items"].length; i++){ 
+
+                          // var jqueryball = $(response["items"][i]["body"])
 
                           var el = document.createElement("div");
-
                           el.innerHTML = response["items"][i]["body"];
+                          // console.log(el.innerHTML)
                        
 
                             for(var x = 0; x < el.childNodes.length; x++){
@@ -96,13 +99,18 @@ function searchQuestionAndAnswer(){
                                     </div>\
                                   </div>")
                            
-                              }
+                              } // end of for if statement for el.childNodes[x].localName 
 
 
-                            }
 
+                            } // end of for loop of el.childNodes.length
                           
-                        }              
+
+                        }   // end of for loop for response items  
+
+                        if($('#answers').is(':empty')){
+                           $("#noanswer").append("<li>Sorry, no code snippets avaliable</li>");
+                        }         
       
                  } // end of else condition
                 
